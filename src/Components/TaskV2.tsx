@@ -1,10 +1,10 @@
-import { Button, Checkbox, TextField } from "@mui/material";
+import { Button } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { TaskData } from "./Task";
 import './TaskV2.css';
 import TaskContext from "../TasksContext";
 import { useDispatch } from "react-redux";
-import { DeleteTaskAcction, ChangeTaskAcction } from "../Actions";
+import { ChangeTaskAcction } from "../Actions";
 import { useNavigate } from "react-router-dom";
 
 interface TaskV2Props {

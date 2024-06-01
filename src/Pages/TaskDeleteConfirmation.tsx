@@ -10,7 +10,6 @@ function TaskDeleteConfirmation() {
   const location = useLocation();
   const TaskID = location.state.taskID;
   const daily = location.state.daily;
-  const updateTasks = location.state.updateTasks;
   const context = useContext(TaskContext);
   const dispach = useDispatch();
   const navigate = useNavigate();

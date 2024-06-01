@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import CheckBox from '@mui/material/Checkbox';
 import Card from '@mui/material/Card';
 import { Button } from '@mui/material';
-import { DeleteTaskAcction, ChangeTaskAcction } from '../Actions';
+import { ChangeTaskAcction } from '../Actions';
 import './Task.css';
 import TaskContext from '../TasksContext';
 import { useDispatch } from 'react-redux';

@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Card } from '@mui/material';
 import './App.css';
 import AddTask from '../Components/AddTask';
-import Task, { TaskData } from '../Components/Task';
+import Task from '../Components/Task';
 import TaskV2 from '../Components/TaskV2';
 import axios, { AxiosResponse } from 'axios';
 import TaskContext from '../TasksContext';
@@ -13,33 +13,6 @@ function App() {
     throw new Error('useTasks must be used within a TasksProvider');
   };
 
-
-  const initialTasks: TaskData[] = [];
-
-  const initialDailyTasks: TaskData[] = [];
-
-  const [toDoList, setToDoList] = useState<TaskData[]>(initialTasks);
-  const [dailyList, setDailyList] = useState<TaskData[]>(initialDailyTasks);
-
-
-
-  useEffect(() => {
-    function scheduleDailyReset() {
-      const today = new Date();
-      const tomorrow = new Date(today);
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      tomorrow.setHours(16, 6, 0, 0);
-      const timeToReset = tomorrow.getTime() - today.getTime();
-      setTimeout(() => {
-        const newDaily = dailyList.map(task => ({ ...task, checked: false }));
-        setDailyList(newDaily);
-        console.log(newDaily);
-      }, timeToReset);
-    }
-  
-    scheduleDailyReset();
-  }, [dailyList]);
-
   useEffect(()=>{
     const response = axios.get('http://localhost:3000/');
     if (context.normalTasks.length > 0 || context.dailyTasks.length > 0) {
@@ -49,7 +22,7 @@ function App() {
     context.clearTasks();
     response.then((res: AxiosResponse) => {
       res.data.forEach((task: any) => {
-        if(task.daily == true){
+        if(task.daily === true){
           context.addTask({taskName: task.taskName, taskID: task.taskID, checked: task.checked, daily: true}, true);
         }
         else{
