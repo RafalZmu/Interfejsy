@@ -37,7 +37,7 @@ const MyContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }
     } catch (error){
       console.log(error);
     }
-  }, [dailyTasks, normalTasks]);
+  }, []);
 
   const clearTasks = () => {
     setDailyTasks([]);

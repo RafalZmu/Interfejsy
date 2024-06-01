@@ -31,7 +31,7 @@ function App() {
         }
       });
     });
-  },[normalTasks, dailyTasks, context, clearTasks, addTask]);
+  },[]);
 
   const handleTaskChange = () => () => {
     //Post data to server
