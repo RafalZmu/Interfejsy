@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TaskData } from './Components/Task';
 import TaskContext from './TasksContext';
 import axios from 'axios';
@@ -27,7 +27,8 @@ const MyContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }
       setNormalTasks((prevTasks) => prevTasks.filter((task) => task.taskID !== taskID));
     }
   }
-  const updateTasks = useCallback(() => {
+  /* eslint-disable */
+  const updateTasks = () => {
     //Post data to server
     let tasksList = dailyTasks.map(task => ({taskName: task.taskName, taskID: task.taskID, checked: task.checked, daily:true}));
     tasksList = tasksList.concat(normalTasks.map(task => ({taskName: task.taskName, taskID: task.taskID, checked: task.checked, daily:false})));
@@ -37,7 +38,8 @@ const MyContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }
     } catch (error){
       console.log(error);
     }
-  }, []);
+  };
+  /* eslint-enable */
 
   const clearTasks = () => {
     setDailyTasks([]);

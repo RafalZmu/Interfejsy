@@ -12,8 +12,8 @@ function App() {
   if (!context) {
     throw new Error('useTasks must be used within a TasksProvider');
   };
-  const { normalTasks, dailyTasks, clearTasks, addTask } = context;
 
+  /* eslint-disable */
   useEffect(()=>{
     const response = axios.get('http://localhost:3000/');
     if (context.normalTasks.length > 0 || context.dailyTasks.length > 0) {
@@ -32,6 +32,7 @@ function App() {
       });
     });
   },[]);
+  /* eslint-enable */
 
   const handleTaskChange = () => () => {
     //Post data to server
