@@ -1,0 +1,39 @@
+.App {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 10px;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+.GridItem{
+  font-size: 50px;
+  padding: 10px;
+  justify-self: center;
+  justify-items: center;
+  border-color: black;
+  border: 2px solid black;
+  width: 45vw;
+  margin:5px;
+}
+.Task{
+  font-size: 40px;
+  padding: 10px;
+}
+
+.AddButton{
+  font-size: 40px;
+  padding: 10px;
+  justify-self: center;
+  justify-items: center;
+  border-color: black;
+  border: 2px solid black;
+  width: 50vw;
+  background-color: #0c5867;
+  color: white;
+  cursor: pointer;
+}

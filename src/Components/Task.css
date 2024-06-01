@@ -1,0 +1,12 @@
+.TaskContainer{
+    display: flex;
+}
+.Text{
+    width: 90%;
+    font-size: 20px;
+}
+.Button{
+    height: fit-content;
+    align-self: center;
+
+}

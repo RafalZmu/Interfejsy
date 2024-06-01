@@ -1,0 +1,12 @@
+.ButtonOuter{
+    width: 90%;
+    font-size: 20px;
+}
+
+.Text{
+    text-align: left;
+}
+
+.ButtonDelete{
+    align-self:self-end;
+}
