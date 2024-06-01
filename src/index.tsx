@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './Pages/App';
-import reportWebVitals from './reportWebVitals';
 import TaskContextProvider from './TasksContextProvider';
 import { Provider } from 'react-redux';
 import store from './store';
@@ -26,5 +25,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
-
-reportWebVitals(console.log);
