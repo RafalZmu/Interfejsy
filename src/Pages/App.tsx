@@ -12,6 +12,7 @@ function App() {
   if (!context) {
     throw new Error('useTasks must be used within a TasksProvider');
   };
+  const { normalTasks, dailyTasks, clearTasks, addTask } = context;
 
   useEffect(()=>{
     const response = axios.get('http://localhost:3000/');
@@ -30,7 +31,7 @@ function App() {
         }
       });
     });
-  },[]);
+  },[normalTasks, dailyTasks, context, clearTasks, addTask]);
 
   const handleTaskChange = () => () => {
     //Post data to server

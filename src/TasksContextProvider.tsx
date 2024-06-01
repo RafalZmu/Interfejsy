@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { TaskData } from './Components/Task';
 import TaskContext from './TasksContext';
 import axios from 'axios';
@@ -10,13 +10,6 @@ const MyContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }
 
   const firstUpdate = React.useRef(true);
 
-  useEffect(() => {
-    if(firstUpdate.current){
-      firstUpdate.current = false;
-      return;
-    }
-    updateTasks();
-  }, [dailyTasks, normalTasks]);
 
   const addTask = (task: TaskData, daily: boolean) => {
     if (daily) {
@@ -34,7 +27,7 @@ const MyContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }
       setNormalTasks((prevTasks) => prevTasks.filter((task) => task.taskID !== taskID));
     }
   }
-  const updateTasks = () => {
+  const updateTasks = useCallback(() => {
     //Post data to server
     let tasksList = dailyTasks.map(task => ({taskName: task.taskName, taskID: task.taskID, checked: task.checked, daily:true}));
     tasksList = tasksList.concat(normalTasks.map(task => ({taskName: task.taskName, taskID: task.taskID, checked: task.checked, daily:false})));
@@ -44,12 +37,20 @@ const MyContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }
     } catch (error){
       console.log(error);
     }
-  }
+  }, [dailyTasks, normalTasks]);
 
   const clearTasks = () => {
     setDailyTasks([]);
     setNormalTasks([]);
   }
+
+  useEffect(() => {
+    if(firstUpdate.current){
+      firstUpdate.current = false;
+      return;
+    }
+    updateTasks();
+  }, [dailyTasks, normalTasks, updateTasks]);
 
   return (
     <TaskContext.Provider value={{ dailyTasks, normalTasks, addTask, deleteTask, clearTasks, updateTasks }}>
