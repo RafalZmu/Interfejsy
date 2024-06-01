@@ -1,6 +1,6 @@
 {
   "name": "todo",
-  "homepage": "http://rafalzmu.github.io/Interfejsy",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
